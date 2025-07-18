@@ -36,8 +36,8 @@ export const Links = () => {
           className={cn(
             `${
               pathname === link.href
-                ? "text-black"
-                : "text-muted-foreground hover:text-black transition-all duration-300"
+                ? "text-black dark:text-white"
+                : "text-muted-foreground hover:text-black dark:hover:text-white transition-all duration-300"
             } w-full md:w-auto justify-start text-start font-medium`
           )}
         >

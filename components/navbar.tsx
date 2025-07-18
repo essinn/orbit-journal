@@ -11,9 +11,10 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "./ui/sheet";
-import { PanelRightClose } from "lucide-react";
+import { PanelLeftClose } from "lucide-react";
 import { LoginLink } from "@kinde-oss/kinde-auth-nextjs";
 import { Links } from "./links";
+import { UserDropdown } from "./user-dropdown";
 
 export const Navbar = ({ user }: { user: any }) => {
   return (
@@ -27,17 +28,23 @@ export const Navbar = ({ user }: { user: any }) => {
         </div>
       </div>
       <div className="hidden md:flex items-center">
-        {!user && (
+        {!user ? (
           <Button asChild>
             <LoginLink>Sign In</LoginLink>
           </Button>
+        ) : (
+          <UserDropdown
+            email={user.email as string}
+            name={user.given_name as string}
+            userImage={user.picture as string}
+          />
         )}
       </div>
       <div className="md:hidden flex">
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="ghost" size="icon">
-              <PanelRightClose className="w-5 h-5" />
+              <PanelLeftClose className="w-5 h-5" />
             </Button>
           </SheetTrigger>
           <SheetContent className="">
@@ -50,11 +57,19 @@ export const Navbar = ({ user }: { user: any }) => {
             <div className="flex flex-col space-y-4 px-4">
               <Links />
             </div>
-            {!user && (
+            {!user ? (
               <SheetFooter>
                 <Button asChild className="w-full">
                   <LoginLink>Sign In</LoginLink>
                 </Button>
+              </SheetFooter>
+            ) : (
+              <SheetFooter>
+                <UserDropdown
+                  email={user.email as string}
+                  name={user.given_name as string}
+                  userImage={user.picture as string}
+                />
               </SheetFooter>
             )}
           </SheetContent>
