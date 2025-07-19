@@ -133,6 +133,7 @@ exports.Prisma.JournalScalarFieldEnum = {
   id: 'id',
   title: 'title',
   content: 'content',
+  date: 'date',
   mood: 'mood',
   tags: 'tags',
   userId: 'userId',

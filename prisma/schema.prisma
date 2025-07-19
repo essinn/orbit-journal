@@ -30,6 +30,7 @@ model Journal {
   id      String   @id @unique
   title   String
   content String
+  date    DateTime
   mood    Mood
   tags    String[]
   userId  String

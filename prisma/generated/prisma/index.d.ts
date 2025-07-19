@@ -2107,6 +2107,7 @@ export namespace Prisma {
     id: string | null
     title: string | null
     content: string | null
+    date: Date | null
     mood: $Enums.Mood | null
     userId: string | null
     createdAt: Date | null
@@ -2117,6 +2118,7 @@ export namespace Prisma {
     id: string | null
     title: string | null
     content: string | null
+    date: Date | null
     mood: $Enums.Mood | null
     userId: string | null
     createdAt: Date | null
@@ -2127,6 +2129,7 @@ export namespace Prisma {
     id: number
     title: number
     content: number
+    date: number
     mood: number
     tags: number
     userId: number
@@ -2140,6 +2143,7 @@ export namespace Prisma {
     id?: true
     title?: true
     content?: true
+    date?: true
     mood?: true
     userId?: true
     createdAt?: true
@@ -2150,6 +2154,7 @@ export namespace Prisma {
     id?: true
     title?: true
     content?: true
+    date?: true
     mood?: true
     userId?: true
     createdAt?: true
@@ -2160,6 +2165,7 @@ export namespace Prisma {
     id?: true
     title?: true
     content?: true
+    date?: true
     mood?: true
     tags?: true
     userId?: true
@@ -2244,6 +2250,7 @@ export namespace Prisma {
     id: string
     title: string
     content: string
+    date: Date
     mood: $Enums.Mood
     tags: string[]
     userId: string
@@ -2272,6 +2279,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     content?: boolean
+    date?: boolean
     mood?: boolean
     tags?: boolean
     userId?: boolean
@@ -2284,6 +2292,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     content?: boolean
+    date?: boolean
     mood?: boolean
     tags?: boolean
     userId?: boolean
@@ -2296,6 +2305,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     content?: boolean
+    date?: boolean
     mood?: boolean
     tags?: boolean
     userId?: boolean
@@ -2308,6 +2318,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     content?: boolean
+    date?: boolean
     mood?: boolean
     tags?: boolean
     userId?: boolean
@@ -2315,7 +2326,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type JournalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "mood" | "tags" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["journal"]>
+  export type JournalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "date" | "mood" | "tags" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["journal"]>
   export type JournalInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -2335,6 +2346,7 @@ export namespace Prisma {
       id: string
       title: string
       content: string
+      date: Date
       mood: $Enums.Mood
       tags: string[]
       userId: string
@@ -2767,6 +2779,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Journal", 'String'>
     readonly title: FieldRef<"Journal", 'String'>
     readonly content: FieldRef<"Journal", 'String'>
+    readonly date: FieldRef<"Journal", 'DateTime'>
     readonly mood: FieldRef<"Journal", 'Mood'>
     readonly tags: FieldRef<"Journal", 'String[]'>
     readonly userId: FieldRef<"Journal", 'String'>
@@ -3216,6 +3229,7 @@ export namespace Prisma {
     id: 'id',
     title: 'title',
     content: 'content',
+    date: 'date',
     mood: 'mood',
     tags: 'tags',
     userId: 'userId',
@@ -3373,6 +3387,7 @@ export namespace Prisma {
     id?: StringFilter<"Journal"> | string
     title?: StringFilter<"Journal"> | string
     content?: StringFilter<"Journal"> | string
+    date?: DateTimeFilter<"Journal"> | Date | string
     mood?: EnumMoodFilter<"Journal"> | $Enums.Mood
     tags?: StringNullableListFilter<"Journal">
     userId?: StringFilter<"Journal"> | string
@@ -3385,6 +3400,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
+    date?: SortOrder
     mood?: SortOrder
     tags?: SortOrder
     userId?: SortOrder
@@ -3400,6 +3416,7 @@ export namespace Prisma {
     NOT?: JournalWhereInput | JournalWhereInput[]
     title?: StringFilter<"Journal"> | string
     content?: StringFilter<"Journal"> | string
+    date?: DateTimeFilter<"Journal"> | Date | string
     mood?: EnumMoodFilter<"Journal"> | $Enums.Mood
     tags?: StringNullableListFilter<"Journal">
     userId?: StringFilter<"Journal"> | string
@@ -3412,6 +3429,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
+    date?: SortOrder
     mood?: SortOrder
     tags?: SortOrder
     userId?: SortOrder
@@ -3429,6 +3447,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Journal"> | string
     title?: StringWithAggregatesFilter<"Journal"> | string
     content?: StringWithAggregatesFilter<"Journal"> | string
+    date?: DateTimeWithAggregatesFilter<"Journal"> | Date | string
     mood?: EnumMoodWithAggregatesFilter<"Journal"> | $Enums.Mood
     tags?: StringNullableListFilter<"Journal">
     userId?: StringWithAggregatesFilter<"Journal"> | string
@@ -3507,6 +3526,7 @@ export namespace Prisma {
     id: string
     title: string
     content: string
+    date: Date | string
     mood: $Enums.Mood
     tags?: JournalCreatetagsInput | string[]
     createdAt?: Date | string
@@ -3518,6 +3538,7 @@ export namespace Prisma {
     id: string
     title: string
     content: string
+    date: Date | string
     mood: $Enums.Mood
     tags?: JournalCreatetagsInput | string[]
     userId: string
@@ -3529,6 +3550,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     mood?: EnumMoodFieldUpdateOperationsInput | $Enums.Mood
     tags?: JournalUpdatetagsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3540,6 +3562,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     mood?: EnumMoodFieldUpdateOperationsInput | $Enums.Mood
     tags?: JournalUpdatetagsInput | string[]
     userId?: StringFieldUpdateOperationsInput | string
@@ -3551,6 +3574,7 @@ export namespace Prisma {
     id: string
     title: string
     content: string
+    date: Date | string
     mood: $Enums.Mood
     tags?: JournalCreatetagsInput | string[]
     userId: string
@@ -3562,6 +3586,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     mood?: EnumMoodFieldUpdateOperationsInput | $Enums.Mood
     tags?: JournalUpdatetagsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3572,6 +3597,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     mood?: EnumMoodFieldUpdateOperationsInput | $Enums.Mood
     tags?: JournalUpdatetagsInput | string[]
     userId?: StringFieldUpdateOperationsInput | string
@@ -3698,6 +3724,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
+    date?: SortOrder
     mood?: SortOrder
     tags?: SortOrder
     userId?: SortOrder
@@ -3709,6 +3736,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
+    date?: SortOrder
     mood?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
@@ -3719,6 +3747,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
+    date?: SortOrder
     mood?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
@@ -3900,6 +3929,7 @@ export namespace Prisma {
     id: string
     title: string
     content: string
+    date: Date | string
     mood: $Enums.Mood
     tags?: JournalCreatetagsInput | string[]
     createdAt?: Date | string
@@ -3910,6 +3940,7 @@ export namespace Prisma {
     id: string
     title: string
     content: string
+    date: Date | string
     mood: $Enums.Mood
     tags?: JournalCreatetagsInput | string[]
     createdAt?: Date | string
@@ -3949,6 +3980,7 @@ export namespace Prisma {
     id?: StringFilter<"Journal"> | string
     title?: StringFilter<"Journal"> | string
     content?: StringFilter<"Journal"> | string
+    date?: DateTimeFilter<"Journal"> | Date | string
     mood?: EnumMoodFilter<"Journal"> | $Enums.Mood
     tags?: StringNullableListFilter<"Journal">
     userId?: StringFilter<"Journal"> | string
@@ -4012,6 +4044,7 @@ export namespace Prisma {
     id: string
     title: string
     content: string
+    date: Date | string
     mood: $Enums.Mood
     tags?: JournalCreatetagsInput | string[]
     createdAt?: Date | string
@@ -4022,6 +4055,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     mood?: EnumMoodFieldUpdateOperationsInput | $Enums.Mood
     tags?: JournalUpdatetagsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4032,6 +4066,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     mood?: EnumMoodFieldUpdateOperationsInput | $Enums.Mood
     tags?: JournalUpdatetagsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4042,6 +4077,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     mood?: EnumMoodFieldUpdateOperationsInput | $Enums.Mood
     tags?: JournalUpdatetagsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
