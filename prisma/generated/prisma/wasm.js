@@ -150,13 +150,7 @@ exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
 };
-exports.Mood = exports.$Enums.Mood = {
-  excited: 'excited',
-  happy: 'happy',
-  neutral: 'neutral',
-  sad: 'sad',
-  angry: 'angry'
-};
+
 
 exports.Prisma.ModelName = {
   User: 'User',

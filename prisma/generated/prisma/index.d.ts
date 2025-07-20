@@ -25,26 +25,6 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
 export type Journal = $Result.DefaultSelection<Prisma.$JournalPayload>
 
 /**
- * Enums
- */
-export namespace $Enums {
-  export const Mood: {
-  excited: 'excited',
-  happy: 'happy',
-  neutral: 'neutral',
-  sad: 'sad',
-  angry: 'angry'
-};
-
-export type Mood = (typeof Mood)[keyof typeof Mood]
-
-}
-
-export type Mood = $Enums.Mood
-
-export const Mood: typeof $Enums.Mood
-
-/**
  * ##  Prisma Client ʲˢ
  *
  * Type-safe database client for TypeScript & Node.js
@@ -2108,7 +2088,7 @@ export namespace Prisma {
     title: string | null
     content: string | null
     date: Date | null
-    mood: $Enums.Mood | null
+    mood: string | null
     userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -2119,7 +2099,7 @@ export namespace Prisma {
     title: string | null
     content: string | null
     date: Date | null
-    mood: $Enums.Mood | null
+    mood: string | null
     userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -2251,7 +2231,7 @@ export namespace Prisma {
     title: string
     content: string
     date: Date
-    mood: $Enums.Mood
+    mood: string
     tags: string[]
     userId: string
     createdAt: Date
@@ -2347,7 +2327,7 @@ export namespace Prisma {
       title: string
       content: string
       date: Date
-      mood: $Enums.Mood
+      mood: string
       tags: string[]
       userId: string
       createdAt: Date
@@ -2780,7 +2760,7 @@ export namespace Prisma {
     readonly title: FieldRef<"Journal", 'String'>
     readonly content: FieldRef<"Journal", 'String'>
     readonly date: FieldRef<"Journal", 'DateTime'>
-    readonly mood: FieldRef<"Journal", 'Mood'>
+    readonly mood: FieldRef<"Journal", 'String'>
     readonly tags: FieldRef<"Journal", 'String[]'>
     readonly userId: FieldRef<"Journal", 'String'>
     readonly createdAt: FieldRef<"Journal", 'DateTime'>
@@ -3290,20 +3270,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Mood'
-   */
-  export type EnumMoodFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Mood'>
-    
-
-
-  /**
-   * Reference to a field of type 'Mood[]'
-   */
-  export type ListEnumMoodFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Mood[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -3388,7 +3354,7 @@ export namespace Prisma {
     title?: StringFilter<"Journal"> | string
     content?: StringFilter<"Journal"> | string
     date?: DateTimeFilter<"Journal"> | Date | string
-    mood?: EnumMoodFilter<"Journal"> | $Enums.Mood
+    mood?: StringFilter<"Journal"> | string
     tags?: StringNullableListFilter<"Journal">
     userId?: StringFilter<"Journal"> | string
     createdAt?: DateTimeFilter<"Journal"> | Date | string
@@ -3417,13 +3383,13 @@ export namespace Prisma {
     title?: StringFilter<"Journal"> | string
     content?: StringFilter<"Journal"> | string
     date?: DateTimeFilter<"Journal"> | Date | string
-    mood?: EnumMoodFilter<"Journal"> | $Enums.Mood
+    mood?: StringFilter<"Journal"> | string
     tags?: StringNullableListFilter<"Journal">
     userId?: StringFilter<"Journal"> | string
     createdAt?: DateTimeFilter<"Journal"> | Date | string
     updatedAt?: DateTimeFilter<"Journal"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id" | "id">
+  }, "id">
 
   export type JournalOrderByWithAggregationInput = {
     id?: SortOrder
@@ -3448,7 +3414,7 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"Journal"> | string
     content?: StringWithAggregatesFilter<"Journal"> | string
     date?: DateTimeWithAggregatesFilter<"Journal"> | Date | string
-    mood?: EnumMoodWithAggregatesFilter<"Journal"> | $Enums.Mood
+    mood?: StringWithAggregatesFilter<"Journal"> | string
     tags?: StringNullableListFilter<"Journal">
     userId?: StringWithAggregatesFilter<"Journal"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Journal"> | Date | string
@@ -3523,11 +3489,11 @@ export namespace Prisma {
   }
 
   export type JournalCreateInput = {
-    id: string
+    id?: string
     title: string
     content: string
     date: Date | string
-    mood: $Enums.Mood
+    mood: string
     tags?: JournalCreatetagsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -3535,11 +3501,11 @@ export namespace Prisma {
   }
 
   export type JournalUncheckedCreateInput = {
-    id: string
+    id?: string
     title: string
     content: string
     date: Date | string
-    mood: $Enums.Mood
+    mood: string
     tags?: JournalCreatetagsInput | string[]
     userId: string
     createdAt?: Date | string
@@ -3551,7 +3517,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    mood?: EnumMoodFieldUpdateOperationsInput | $Enums.Mood
+    mood?: StringFieldUpdateOperationsInput | string
     tags?: JournalUpdatetagsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3563,7 +3529,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    mood?: EnumMoodFieldUpdateOperationsInput | $Enums.Mood
+    mood?: StringFieldUpdateOperationsInput | string
     tags?: JournalUpdatetagsInput | string[]
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3571,11 +3537,11 @@ export namespace Prisma {
   }
 
   export type JournalCreateManyInput = {
-    id: string
+    id?: string
     title: string
     content: string
     date: Date | string
-    mood: $Enums.Mood
+    mood: string
     tags?: JournalCreatetagsInput | string[]
     userId: string
     createdAt?: Date | string
@@ -3587,7 +3553,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    mood?: EnumMoodFieldUpdateOperationsInput | $Enums.Mood
+    mood?: StringFieldUpdateOperationsInput | string
     tags?: JournalUpdatetagsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3598,7 +3564,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    mood?: EnumMoodFieldUpdateOperationsInput | $Enums.Mood
+    mood?: StringFieldUpdateOperationsInput | string
     tags?: JournalUpdatetagsInput | string[]
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3700,13 +3666,6 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type EnumMoodFilter<$PrismaModel = never> = {
-    equals?: $Enums.Mood | EnumMoodFieldRefInput<$PrismaModel>
-    in?: $Enums.Mood[] | ListEnumMoodFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Mood[] | ListEnumMoodFieldRefInput<$PrismaModel>
-    not?: NestedEnumMoodFilter<$PrismaModel> | $Enums.Mood
-  }
-
   export type StringNullableListFilter<$PrismaModel = never> = {
     equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     has?: string | StringFieldRefInput<$PrismaModel> | null
@@ -3752,16 +3711,6 @@ export namespace Prisma {
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type EnumMoodWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Mood | EnumMoodFieldRefInput<$PrismaModel>
-    in?: $Enums.Mood[] | ListEnumMoodFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Mood[] | ListEnumMoodFieldRefInput<$PrismaModel>
-    not?: NestedEnumMoodWithAggregatesFilter<$PrismaModel> | $Enums.Mood
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumMoodFilter<$PrismaModel>
-    _max?: NestedEnumMoodFilter<$PrismaModel>
   }
 
   export type JournalCreateNestedManyWithoutUserInput = {
@@ -3822,10 +3771,6 @@ export namespace Prisma {
     create?: XOR<UserCreateWithoutUserInput, UserUncheckedCreateWithoutUserInput>
     connectOrCreate?: UserCreateOrConnectWithoutUserInput
     connect?: UserWhereUniqueInput
-  }
-
-  export type EnumMoodFieldUpdateOperationsInput = {
-    set?: $Enums.Mood
   }
 
   export type JournalUpdatetagsInput = {
@@ -3908,40 +3853,23 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedEnumMoodFilter<$PrismaModel = never> = {
-    equals?: $Enums.Mood | EnumMoodFieldRefInput<$PrismaModel>
-    in?: $Enums.Mood[] | ListEnumMoodFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Mood[] | ListEnumMoodFieldRefInput<$PrismaModel>
-    not?: NestedEnumMoodFilter<$PrismaModel> | $Enums.Mood
-  }
-
-  export type NestedEnumMoodWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Mood | EnumMoodFieldRefInput<$PrismaModel>
-    in?: $Enums.Mood[] | ListEnumMoodFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Mood[] | ListEnumMoodFieldRefInput<$PrismaModel>
-    not?: NestedEnumMoodWithAggregatesFilter<$PrismaModel> | $Enums.Mood
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumMoodFilter<$PrismaModel>
-    _max?: NestedEnumMoodFilter<$PrismaModel>
-  }
-
   export type JournalCreateWithoutUserInput = {
-    id: string
+    id?: string
     title: string
     content: string
     date: Date | string
-    mood: $Enums.Mood
+    mood: string
     tags?: JournalCreatetagsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type JournalUncheckedCreateWithoutUserInput = {
-    id: string
+    id?: string
     title: string
     content: string
     date: Date | string
-    mood: $Enums.Mood
+    mood: string
     tags?: JournalCreatetagsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -3981,7 +3909,7 @@ export namespace Prisma {
     title?: StringFilter<"Journal"> | string
     content?: StringFilter<"Journal"> | string
     date?: DateTimeFilter<"Journal"> | Date | string
-    mood?: EnumMoodFilter<"Journal"> | $Enums.Mood
+    mood?: StringFilter<"Journal"> | string
     tags?: StringNullableListFilter<"Journal">
     userId?: StringFilter<"Journal"> | string
     createdAt?: DateTimeFilter<"Journal"> | Date | string
@@ -4041,11 +3969,11 @@ export namespace Prisma {
   }
 
   export type JournalCreateManyUserInput = {
-    id: string
+    id?: string
     title: string
     content: string
     date: Date | string
-    mood: $Enums.Mood
+    mood: string
     tags?: JournalCreatetagsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -4056,7 +3984,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    mood?: EnumMoodFieldUpdateOperationsInput | $Enums.Mood
+    mood?: StringFieldUpdateOperationsInput | string
     tags?: JournalUpdatetagsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4067,7 +3995,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    mood?: EnumMoodFieldUpdateOperationsInput | $Enums.Mood
+    mood?: StringFieldUpdateOperationsInput | string
     tags?: JournalUpdatetagsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4078,7 +4006,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    mood?: EnumMoodFieldUpdateOperationsInput | $Enums.Mood
+    mood?: StringFieldUpdateOperationsInput | string
     tags?: JournalUpdatetagsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

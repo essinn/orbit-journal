@@ -27,11 +27,11 @@ model User {
 }
 
 model Journal {
-  id      String   @id @unique
+  id      String   @id @default(cuid())
   title   String
   content String
   date    DateTime
-  mood    Mood
+  mood    String
   tags    String[]
   userId  String
 
@@ -39,12 +39,4 @@ model Journal {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-}
-
-enum Mood {
-  excited
-  happy
-  neutral
-  sad
-  angry
 }
