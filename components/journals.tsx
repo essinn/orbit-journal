@@ -9,7 +9,7 @@ async function getJournals() {
   const user = await getUser();
 
   if (!user) {
-    throw new Error("User not authenticated");
+    return [];
   }
 
   const data = await prisma.journal.findMany({
@@ -72,7 +72,7 @@ export const Journals = async () => {
             </h2>
             <p className="text-sm text-muted-foreground">
               Create a new journal entry by clicking New Entry or
-              <span className="px-2 py-1 bg-muted text-muted-foreground text-xs">
+              <span className="px-2 py-1 bg-muted text-muted-foreground text-xs ml-1 rounded">
                 Ctrl/Cmd + N
               </span>
             </p>
