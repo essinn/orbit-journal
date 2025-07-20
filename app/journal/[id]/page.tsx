@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import { deleteEntry } from "@/lib/actions";
 import { prisma } from "@/lib/prisma";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Edit, Trash } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -33,19 +34,42 @@ export default async function journalPage({
   params: { id: string };
 }) {
   const journal = await getJournal(params.id);
+
+  if (!journal) {
+    return notFound();
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <div className="max-w-4xl mx-auto p-6">
-        <div className="flex items-center gap-4 mb-8">
-          <Link href="/">
-            <Button variant="ghost" size="icon">
-              <ArrowLeft className="w-4 h-4" />
-            </Button>
-          </Link>
-          <div>
-            <h1 className="text-3xl font-bold text-foreground">
-              {journal.title}
-            </h1>
+        <div className="flex items-center justify-between gap-4 mb-8">
+          <div className="flex items-center gap-4">
+            <Link href="/">
+              <Button variant="ghost" size="icon">
+                <ArrowLeft className="w-4 h-4" />
+              </Button>
+            </Link>
+            <div>
+              <h1 className="text-3xl font-bold text-foreground">
+                {journal.title}
+              </h1>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <Link href={`/journal/${journal.id}/edit`}>
+              <Button variant="default">
+                <Edit className="w-4 h-4" />
+                Edit Entry
+              </Button>
+            </Link>
+
+            <form action={deleteEntry}>
+              <input type="hidden" name="id" value={journal.id} />
+              <Button variant="destructive">
+                <Trash className="w-4 h-4" />
+                Delete Entry
+              </Button>
+            </form>
           </div>
         </div>
 

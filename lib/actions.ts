@@ -42,3 +42,27 @@ export async function addNewEntry(prevState: unknown, formData: FormData) {
 
   redirect("/");
 }
+
+export const deleteEntry = async (formData: FormData) => {
+  const journalId = formData.get("id") as string;
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
+  if (!user) {
+    redirect("/");
+  }
+
+  const journal = await prisma.journal.findUnique({
+    where: { id: journalId, userId: user.id },
+  });
+
+  if (!journal) {
+    redirect("/");
+  }
+
+  await prisma.journal.delete({
+    where: { id: journalId },
+  });
+
+  redirect("/");
+};
