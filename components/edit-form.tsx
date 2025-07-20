@@ -84,6 +84,9 @@ export const EditForm = ({
           </Link>
           <div>
             <h1 className="text-3xl font-bold text-foreground">Edit Entry</h1>
+            <p className="text-muted-foreground">
+              Update your thoughts and feelings
+            </p>
           </div>
         </div>
         <form

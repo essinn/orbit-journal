@@ -50,7 +50,7 @@ export default async function journalPage({
               </Button>
             </Link>
             <div>
-              <h1 className="text-3xl font-bold text-foreground">
+              <h1 className="text-xl md:text-3xl font-bold text-foreground">
                 {journal.title}
               </h1>
             </div>
@@ -59,7 +59,7 @@ export default async function journalPage({
             <Link href={`/journal/${journal.id}/edit`}>
               <Button variant="default">
                 <Edit className="w-4 h-4" />
-                Edit Entry
+                <span className="hidden md:flex">Edit Entry</span>
               </Button>
             </Link>
 
@@ -67,7 +67,7 @@ export default async function journalPage({
               <input type="hidden" name="id" value={journal.id} />
               <Button variant="destructive">
                 <Trash className="w-4 h-4" />
-                Delete Entry
+                <span className="hidden md:flex">Delete Entry</span>
               </Button>
             </form>
           </div>

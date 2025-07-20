@@ -66,6 +66,9 @@ export const NewEntryForm = () => {
           </Link>
           <div>
             <h1 className="text-3xl font-bold text-foreground">New Entry</h1>
+            <p className="text-muted-foreground">
+              Capture your thoughts and feelings
+            </p>
           </div>
         </div>
         <form
