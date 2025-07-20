@@ -7,7 +7,7 @@ import { useForm } from "@conform-to/react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Info, Loader2, Pen, Tag, Text, X } from "lucide-react";
+import { ArrowLeft, Info, Loader2, Tag, Text, X } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useFormStatus } from "react-dom";

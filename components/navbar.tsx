@@ -16,7 +16,7 @@ import { LoginLink } from "@kinde-oss/kinde-auth-nextjs";
 import { Links } from "./links";
 import { UserDropdown } from "./user-dropdown";
 
-export const Navbar = ({ user }: { user: any }) => {
+export const Navbar = ({ user }: { user: string | any }) => {
   return (
     <nav className="sticky flex justify-between items-center mx-4 py-2 bg-transparent backdrop-blur-md">
       <div className="flex items-center space-x-6">
