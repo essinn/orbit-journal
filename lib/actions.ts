@@ -4,6 +4,7 @@ import { prisma } from "./prisma";
 import { redirect } from "next/navigation";
 import { parseWithZod } from "@conform-to/zod";
 import { journalSchema } from "./schema";
+import { startOfMonth, endOfMonth } from "date-fns";
 
 export async function addNewEntry(prevState: unknown, formData: FormData) {
   const { getUser } = getKindeServerSession();
@@ -106,3 +107,36 @@ export const deleteEntry = async (formData: FormData) => {
 
   redirect("/");
 };
+
+export async function getJournalEntriesByMonth({
+  year,
+  month,
+  userId,
+}: {
+  year: number;
+  month: number;
+  userId: string;
+}) {
+  const start = startOfMonth(new Date(year, month));
+  const end = endOfMonth(start);
+
+  const entries = await prisma.journal.findMany({
+    where: {
+      userId,
+      date: {
+        gte: start,
+        lte: end,
+      },
+    },
+    orderBy: {
+      date: "asc",
+    },
+  });
+
+  return entries.map(entry => ({
+    id: entry.id,
+    date: entry.date.toISOString(),
+    mood: entry.mood,
+    title: entry.title,
+  }));
+}
